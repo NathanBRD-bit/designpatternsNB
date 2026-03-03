@@ -1,18 +1,3 @@
-📌 Nom du pattern
-🎯 Problème qu’il résout
-🧠 Principe de fonctionnement
-🏗 Structure (rôles des classes)
-📈 Avantages
-⚠️ Inconvénients
-🧩 Cas d’usage réel possible
-
-✅ Obligations
-Inventer un scénario original
-Justifier pourquoi le pattern est pertinent
-Respecter les principes SOLID
-Produire un code propre et structuré
-Mettre des commentaires explicatifs
-
 # Décorateur
 
 ## Problèmes que résout le Décorateur
@@ -26,7 +11,7 @@ Permet de décider du comportement a adopter pendant l'exécution, contrairement
 
 Le **décorateur de base** permet d'étendre les fonctionnalités d'un **concrete component** (un objet) au cours du programme sans casser son fonctionnement et sans hériter directement de lui.
 
-Il implémente le même **component** (interface) que le concrete component et possède un obejt qui fait liaison vers un objet de type component.  
+Il implémente le même **component** (interface) que le concrete component et possède un objet qui fait liaison vers un objet de type component.  
 Grâce à cette référence le décorateur délègue le travail à l'objet décoré tout en pouvant ajouter un comportement avant ou après l’appel.
 
 Le décorateur de base ne contient pas de logique métier supplémentaire en lui-même, il sert surtout de structure commune aux **concrete decorators**.
@@ -36,7 +21,7 @@ Les **concrete decorators** héritent du décorateur de base et redéfinissent l
 ## Structure
 
 Le **Component** est l'interface qui sera commune au décorateur et à la classe décorée avec les méthode qu'on veut décorer.
-
+ 
 Le **concrete component** est simplement la classe qui verra ses objets être décorés, donc avec tout la logique métier classique mais qui peut être
 décorée, elle implémente le component.
 
