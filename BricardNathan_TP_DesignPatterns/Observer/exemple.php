@@ -4,8 +4,13 @@
  * Cet exemple reprend le cas d'usage de l'explication
  */
 
+/*
+ * L'interface SplSubject est native à PHP, elle possède les méthode attach() et detach() qui permettent d'ajouter et de supprimer des observateurs
+ * ainsi que notify() pour notifier les observers
+ */
 class OrderSubject implements \SplSubject
 {
+    // SplObjectStorage est natif à PHP, il possède plein de méthode pour ajouter et supprimer des objets et d'autres encore (voir la doc en ligne)
     private SplObjectStorage $observers;
     private float $price;
     private string $state;
@@ -19,16 +24,25 @@ class OrderSubject implements \SplSubject
         $this->products = $products;
     }
 
+    /*
+     * Ajout d'un observateur
+     */
     public function attach(SplObserver $observer): void
     {
         $this->observers->attach($observer);
     }
 
+    /*
+     * Suppression d'un observateur
+     */
     public function detach(SplObserver $observer): void
     {
         $this->observers->detach($observer);
     }
 
+    /*
+     * Notifie les observateurs de la commande
+     */
     public function notify(): void
     {
         foreach ($this->observers as $observer) {
@@ -78,6 +92,10 @@ class OrderSubject implements \SplSubject
     }
 }
 
+/*
+ * Classe qui gère les stocks produits
+ * À chaque création de commande on abonne le StockObserver à celle-ci
+ */
 class StockObserver implements SplObserver
 {
 
@@ -93,6 +111,10 @@ class StockObserver implements SplObserver
     }
 }
 
+/*
+ * Classe qui gère les envoie de mail
+ * À chaque création de commande on abonne le EmailObserver à celle-ci
+ */
 class EmailObserver implements SplObserver
 {
     public function update(SplSubject $subject): void
@@ -123,5 +145,8 @@ $stock = new StockObserver();
 $email = new EmailObserver();
 $order->attach($stock);
 $order->attach($email);
+
+// le client passe commande avec le choix de payer par chèque
 $order->setState('en attente de paiement par chèque');
+// le chèque a été reçu, la commande passe en 'paiement validé' depuis le BO
 $order->setState('paiement validé');

@@ -1,18 +1,3 @@
-📌 Nom du pattern
-🎯 Problème qu’il résout
-🧠 Principe de fonctionnement
-🏗 Structure (rôles des classes)
-📈 Avantages
-⚠️ Inconvénients
-🧩 Cas d’usage réel possible
-
-✅ Obligations
-Inventer un scénario original
-Justifier pourquoi le pattern est pertinent
-Respecter les principes SOLID
-Produire un code propre et structuré
-Mettre des commentaires explicatifs
-
 # Observer
 
 ## Problèmes que résout l'observer
